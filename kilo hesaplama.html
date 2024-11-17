@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<TITLE>Kilo Hesapla</TITLE>
+</HEAD>
+<BODY>
+<TD height="4" width="100%">
+<DIV align=center id=aws_4321>&nbsp; 
+<DIV style="BACKGROUND: #fffef4; POSITION: relative; TOP: -54px">
+<P align=center><BR>
+<P>
+<SCRIPT language=JavaScript>
+
+function kontrol()
+{
+	if (diyet.boy.value == "" )
+	{
+		alert("Boyunuzu giriniz.");
+		diyet.boy.focus();
+		return(false);
+  	}
+
+
+	if (diyet.kilo.value == "" )
+	{
+		alert("Kilonuzu giriniz.");
+		diyet.kilo.focus();
+		return(false);
+  	}
+
+	if (diyet.yas.value == "" )
+	{
+		alert("Yaþýnýzý giriniz.");
+		diyet.yas.focus();
+		return(false);
+  	}
+check()
+}
+	
+	
+function check()
+{
+var c1=0 ; var d1=0
+var c2=0 ; var d2=0
+var c3=0 ; var d3=0
+
+if (document.diyet.boy.value >= 140)  {var c1=1}
+if (document.diyet.boy.value <= 200)  {var d1=1}
+if (document.diyet.kilo.value >= 37)  {var c2=2}
+if (document.diyet.kilo.value <= 140)  {var d2=2}
+if (document.diyet.yas.value >= 16)  {var c3=4}
+if (document.diyet.yas.value <= 60)  {var d3=4}
+
+var c=c1+c2+c3
+var d=d1+d2+d3
+
+alarm=new Array()
+alarm[0]="Boy, kilo ve yaþ "
+alarm[1]="kilo ve yaþ "
+alarm[2]="boy ve yaþ "
+alarm[3]="yaþ "
+alarm[4]="boy ve kilo "
+alarm[5]="kilo "
+alarm[6]="boy "
+
+if (c==7) 
+		{if (d==7){i_kilo()}
+		else {alert(alarm[d] + "uygun deðil !")}
+		}
+	else {alert(alarm[c] + "uygun deðil !")}
+	}
+
+function i_kilo()
+{
+	var temp1 = Math.round(document.diyet.yas.value/49);
+	var temp2 = Math.round(document.diyet.yas.value/71);
+	var temp3 = Math.round(document.diyet.yas.value/91);
+	var tem = document.diyet.cinsiyet.value
+	var neki = 0
+	
+	if (tem == 0) 
+	{
+	if (temp1 != 0)  {neki = 21}
+	if (temp1 == 0)  {neki = 20}
+	}
+
+	if (tem != 0) 
+	{
+	 if (temp1 != 0)  
+		{
+		if (temp2 != 0) 
+			{
+			if (temp3 != 0)  {neki = 24}
+			if (temp3 == 0)  {neki = 23}
+			}
+		if (temp2 == 0)  {neki = 22}
+		}
+	if (temp1 == 0)  {neki = 21}
+	}
+ 		
+document.diyet.ideal.value = Math.round(neki * Math.pow(document.diyet.boy.value,2)/10000)
+
+document.diyet.fark.value = document.diyet.kilo.value - document.diyet.ideal.value
+
+if (document.diyet.fark.value > 0 )
+	{alert(document.diyet.fark.value + " kilo vermelisiniz.")}
+if (document.diyet.fark.value < 0 )
+	{alert(document.diyet.fark.value*(-1) + " kilo almalýsýnýz.")}
+if (document.diyet.fark.value == 0 )
+	{alert("Bravo. Ýdeal kilonuzdasýnýz.")}
+
+}
+// end hiding -->
+</SCRIPT>
+<FONT size=2><BR><BR>
+<FORM name=diyet>
+<TABLE align=center border=1 cellPadding=5 cellSpacing=2 width=400 ?>
+  <TBODY>
+  <TR>
+    <TD>Boyunuz</TD>
+    <TD><INPUT maxLength=5 name=boy size=2>&nbsp;&nbsp;cm</TD>
+    <TD align=middle bgColor=#fffef4 rowSpan=4 width=160><BR><BR><INPUT onclick=kontrol() type=button value=" hesapla"> 
+      <BR><BR><BR></TD>
+    <TD>&nbsp;&nbsp;</TD>
+    <TD>&nbsp;&nbsp;</TD></TR>
+  <TR bgColor=#e4ecf3>
+    <TD>Kilonuz </TD>
+    <TD><INPUT maxLength=5 name=kilo size=2>&nbsp;&nbsp;kg</TD>
+    <TD>Ýdeal Kilonuz </TD>
+    <TD><INPUT name=ideal size=2 type=list>&nbsp;&nbsp;kg</TD></TR>
+  <TR bgColor=#e2e2e2>
+    <TD>Yaþýnýz</TD>
+    <TD><INPUT name=yas size=2></TD>
+    <TD>&nbsp;&nbsp;</TD>
+    <TD>&nbsp;&nbsp;</TD></TR>
+  <TR bgColor=#e4ecf3>
+    <TD>Cinsiyetiniz</TD>
+    <TD><SELECT name=cinsiyet> <OPTION selected value=0>BAYAN</OPTION> 
+        <OPTION value=1>ERKEK</OPTION></SELECT> </TD>
+    <TD>Fark </TD>
+    <TD><INPUT name=fark size=2 type=list>&nbsp;&nbsp;kg</TD></TR>
+  <TR>
+    <TD align=right bgColor=white colSpan=5><A 
+      href="javascript:window.close();" 
+      style="BACKGROUND-COLOR: #000000">&nbsp;</A></FONT><A 
+      href="javascript:window.close();" style="BACKGROUND-COLOR: #000000"><FONT 
+      face=Verdana size=1><B><FONT color=white>KAPAT</FONT>&nbsp;</B></FONT></A> 
+    </TD></TR></TBODY></TABLE></P></DIV></FORM></TD></TR><TR><TD height="15" 
+width="100%">
+<P align=center><B><FONT color=#910000 face=Verdana size=1>..... 
+</FONT></B></TD></TR></TABLE></SCRIPT>
